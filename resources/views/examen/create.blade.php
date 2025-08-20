@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-   @if(isset($course))
+   @if(isset($examen))
         <div class="wrapper w-30 shadow m-auto p-4 mt-3">
             <h2>Modifier Un Examen</h2>
 
