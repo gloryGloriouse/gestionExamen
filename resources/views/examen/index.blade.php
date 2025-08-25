@@ -3,7 +3,11 @@
     <div class="row">
         <div class="col-md-12 mx-auto mt-5">
             <h2>Liste des Examens</h2>
-            <a href="{{route('examen.create')}}" class="btn btn-success my-3">Ajouter</a>
+
+            <div class="d-flex justify-content-between align-items-center ">
+                <a href="{{route('examen.create')}}" class="btn btn-success my-3">Ajouter</a>
+                <a href="{{route('examen.result.create')}}" class="btn btn-warning my-3 text-white">Enregistrer les notes</a>
+            </div>
             <table class="table table-striped shadow">
                 @if (session()->has('success'))
                     <div class="alert alert-success text-center my-2">

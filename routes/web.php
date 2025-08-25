@@ -5,6 +5,7 @@ use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ExamenController;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +18,18 @@ use App\Http\Controllers\ExamenController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+Route::get("login",[AuthController::class, 'loginForm'])->name("login");
+Route::post("login",[AuthController::class, 'logIn'])->name('login.user');
+Route::get("register",[AuthController::class, 'registration'])->name("register");
+Route::post("register",[AuthController::class, 'userRegistration'])->name('register.user');
+Route::get("logout",[AuthController::class, 'logOut'])->name('logout.user');
+Route::get('/results/show',[ExamenController::class, 'showresult'])->name('examen.result.show');
+    
+
+Route::middleware("auth")->group(function(){
 
 Route::prefix("filieres")->group(function(){
     Route::get('/', [FiliereController::class,'viewfiliere'])->name("filieres.view");
@@ -48,6 +59,8 @@ Route::prefix("students")->group(function(){
 });
 
 Route::prefix("examens")->group(function(){ 
+    Route::get('results',[ExamenController::class, 'createresult'])->name('examen.result.create');
+    Route::post('results',[ExamenController::class, 'storeresult'])->name('examen.result.store');
     Route::get('/', [ExamenController::class,'examen'])->name("examen.view");
     Route::get('/create', [ExamenController::class,'create'])->name("examen.create");
     Route::post('/', [ExamenController::class,'store'])->name('examen.store');
@@ -56,6 +69,6 @@ Route::prefix("examens")->group(function(){
     Route::delete('/{examen}', [ExamenController::class, 'destroy'])->name('examen.destroy');
 });
 
-
+});
 
 

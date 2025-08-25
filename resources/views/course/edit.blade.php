@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <div class="wrapper w-30 shadow m-auto p-4 mt-5">
+    <div class="wrapper w-30 shadow m-auto p-4 mt-4">
         <h2>Modifier Un Cour</h2>
 
         <form class="mt-4" action="{{route('course.update',$course->id)}}" method="POST" class="mt-4"> 

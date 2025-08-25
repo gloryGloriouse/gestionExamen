@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
     <div class="row">
-        <div class="col-md-9 mx-auto mt-5">
+        <div class="col-md-11 mx-auto mt-5">
             <h2>Liste des Cours</h2>
             <a href="{{route('course.create')}}" class="btn btn-success my-3">Ajouter</a>
             <table class="table table-striped shadow">
